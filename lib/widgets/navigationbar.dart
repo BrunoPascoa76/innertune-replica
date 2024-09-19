@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innertune_replica/widgets/library.dart';
 
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
@@ -28,10 +29,7 @@ class _BottomNavigationBarState extends State<NavigationBarWidget>{
       'Index 1: Business',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    LibraryScreen(),
   ];
 
   @override
