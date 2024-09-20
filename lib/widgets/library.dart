@@ -10,7 +10,7 @@ class LibraryScreen extends StatelessWidget{
           //TODO: add search bar (separate file for reusability)
           //"filters" (for lack of a better term)
           SizedBox(
-            height: 30.0,
+            height: 50.0,
             child: ListView(
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
@@ -42,7 +42,17 @@ class LibraryScreen extends StatelessWidget{
               ]
           )
           ),
-          //TODO: add playlists
+          GridView.count(
+            childAspectRatio: 1,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            children: [
+              iconPlaylist(Icons.favorite,"Liked"),
+              iconPlaylist(Icons.download_for_offline, "Downloaded"),
+              iconPlaylist(Icons.trending_up, "My Top 50")
+            ]
+          )
         ]
       ),
     );
@@ -51,7 +61,7 @@ class LibraryScreen extends StatelessWidget{
 
 Widget playlistFilter(String name){
   return Padding(
-    padding: EdgeInsets.only(left: 12),
+    padding: EdgeInsets.only(left: 12,bottom:20),
     child: TextButton(
       onPressed: (){},
       style: ButtonStyle(
@@ -68,4 +78,35 @@ Widget playlistFilter(String name){
       child: Text(name,style: TextStyle(fontSize: 15)),
     )
   );
+}
+
+Widget iconPlaylist(IconData icon,String text){
+    return Padding(
+      padding: EdgeInsets.only(left:10,bottom:15,right:20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              return ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Color.fromARGB(255, 189, 188, 188),
+                backgroundColor: Color.fromARGB(255,64,71,89),
+                fixedSize: Size(constraints.maxWidth, constraints.maxWidth-11),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              child: Icon(icon,size:80),
+              );
+            },
+          ),
+          Padding(
+            padding: EdgeInsets.only(top:5),
+            child:Text(style:TextStyle(fontWeight: FontWeight.bold,fontSize:15),text)
+          )
+        ]
+      ),
+    );  
 }
