@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:innertune_replica/entities/playlist.dart';
 import 'package:innertune_replica/main.dart';
+import 'package:innertune_replica/widgets/searchbar.dart';
 import 'package:provider/provider.dart';
 
 
@@ -18,8 +19,7 @@ class _LibraryScreenStatus extends State<LibraryScreen>{
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          //TODO: add search bar (separate file for reusability)
-          //"filters" (for lack of a better term)
+          SearchBarWidget(),
           SizedBox(
             height: 50.0,
             child: ListView(
@@ -124,9 +124,9 @@ Widget iconPlaylist(IconData icon,String text){
 }
 
 List<Widget> generateImagePlaylists(MyAppState state){
-  List<Widget> all_playlists=[];
+  List<Widget> allPlaylists=[];
   for (Playlist playlist in state.playlists){
-    all_playlists.add(playlist.generateThumbnail());
+    allPlaylists.add(playlist.generateThumbnail());
   }
-  return all_playlists;
+  return allPlaylists;
 }
