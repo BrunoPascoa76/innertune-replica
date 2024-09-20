@@ -23,7 +23,25 @@ class LibraryScreen extends StatelessWidget{
               ],
             )
           ),
-          //TODO: add "quando adicioada row"
+          Padding(
+            padding: EdgeInsets.only(top:10,bottom:10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  onPressed: (){},
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Quando adicionada "),
+                      Icon(Icons.arrow_downward)
+                    ],
+                  )
+                ),
+                IconButton(onPressed: (){}, icon: Icon(Icons.grid_view)) 
+              ]
+          )
+          ),
           //TODO: add playlists
         ]
       ),
@@ -45,7 +63,7 @@ Widget playlistFilter(String name){
           ),
           borderRadius: BorderRadius.all(Radius.circular(8)),
         )),
-        padding: WidgetStatePropertyAll(EdgeInsets.only(left:15,right:15))
+        padding: WidgetStatePropertyAll(EdgeInsets.only(left:15,right:15,top:2,bottom:2))
       ),
       child: Text(name,style: TextStyle(fontSize: 15)),
     )
