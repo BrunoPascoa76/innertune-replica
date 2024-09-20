@@ -11,51 +11,32 @@ class NavigationBarWidget extends StatefulWidget {
 
 class _BottomNavigationBarState extends State<NavigationBarWidget>{
   int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    LibraryScreen(),
+   
+  final _pageOptions= <Widget>[
+    Text("aaaa"),
+    Text("bbbb"),
+    LibraryScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icon(Icons.home),_selectedIndex==0),
-            label: 'Início',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icon(Icons.explore),_selectedIndex==1),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icon(Icons.library_music),_selectedIndex==2),
-            label: 'Library',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            _selectedIndex=index;
+          });
+        },
+        indicatorColor: Color.fromARGB(255,64,71,89),
+        selectedIndex: _selectedIndex,
+        destinations: const <Widget>[
+          NavigationDestination(icon: Icon(Icons.home), label: "Início"),
+          NavigationDestination(icon: Icon(Icons.explore), label: "Explore"),
+          NavigationDestination(icon: Icon(Icons.library_music), label: "Library"),
+        ]),
+        body: SafeArea(
+          child:_pageOptions[_selectedIndex]
+        )
     );
   }
 
