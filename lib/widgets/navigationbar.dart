@@ -39,17 +39,4 @@ class _BottomNavigationBarState extends State<NavigationBarWidget>{
         )
     );
   }
-
-  Widget _buildIcon(Icon icon, bool isSelected) {
-    return Container(
-      width: 55,
-      height: 35,
-      padding: EdgeInsets.all(4.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.elliptical(100, 100)),
-        color: isSelected ? const Color.fromARGB(255,64,71,89) : Colors.transparent, // Customize outline color
-      ),
-      child: icon,
-    );
-  }
 }

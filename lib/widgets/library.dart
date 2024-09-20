@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:innertune_replica/entities/playlist.dart';
+import 'package:innertune_replica/main.dart';
+import 'package:provider/provider.dart';
 
-class LibraryScreen extends StatelessWidget{
-  const LibraryScreen({Key? key}) : super(key: key);
+
+class LibraryScreen extends StatefulWidget {
+  const LibraryScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() =>
+    _LibraryScreenStatus();
+}
+class _LibraryScreenStatus extends State<LibraryScreen>{
   @override
   Widget build(BuildContext context) {
+    var appState=context.watch<MyAppState>();
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -47,11 +58,12 @@ class LibraryScreen extends StatelessWidget{
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             crossAxisCount: 2,
+            mainAxisSpacing: 20,
             children: [
               iconPlaylist(Icons.favorite,"Liked"),
               iconPlaylist(Icons.download_for_offline, "Downloaded"),
-              iconPlaylist(Icons.trending_up, "My Top 50")
-            ]
+              iconPlaylist(Icons.trending_up, "My Top 50"),
+            ]+generateImagePlaylists(appState),
           )
         ]
       ),
@@ -109,4 +121,12 @@ Widget iconPlaylist(IconData icon,String text){
         ]
       ),
     );  
+}
+
+List<Widget> generateImagePlaylists(MyAppState state){
+  List<Widget> all_playlists=[];
+  for (Playlist playlist in state.playlists){
+    all_playlists.add(playlist.generateThumbnail());
+  }
+  return all_playlists;
 }
