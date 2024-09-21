@@ -48,8 +48,21 @@ class _PlaylistScreenStatus extends State<PlaylistScreen>{
                   )
                 ]))
               ]),
-            )
-            //TODO: playlist buttons
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:10,right: 10),
+              child: Row(children: [
+                    Expanded(flex:10,child: ElevatedButton.icon(onPressed: (){},icon:Icon(Icons.play_arrow),label:Text("Tocar"),style:ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255,173,198,255),
+                      foregroundColor: Color.fromARGB(255,15,45,95)
+                    ))),
+                    Spacer(flex:1),
+                    Expanded(flex:10,child: ElevatedButton.icon(onPressed: (){},icon:Icon(Icons.shuffle),label:Text("Aleatório"),style:ElevatedButton.styleFrom(
+                      side: BorderSide(color: Color.fromARGB(255,173,198,255),width: 1),
+                      foregroundColor: Color.fromARGB(255,173,198,255)
+                    )))
+              ]),
+            ),
             //TODO: sort,...
             //TODO: song list
           ])
