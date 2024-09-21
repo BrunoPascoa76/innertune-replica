@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:innertune_replica/entities/playlist.dart';
 import 'package:innertune_replica/main.dart';
+import 'package:innertune_replica/widgets/playlistScreen.dart';
 import 'package:innertune_replica/widgets/searchbar.dart';
 import 'package:provider/provider.dart';
 
@@ -101,7 +102,12 @@ Widget iconPlaylist(IconData icon,String text){
           LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context)=> const PlaylistScreen())
+                );
+              },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Color.fromARGB(255, 189, 188, 188),
                 backgroundColor: Color.fromARGB(255,64,71,89),
@@ -126,7 +132,7 @@ Widget iconPlaylist(IconData icon,String text){
 List<Widget> generateImagePlaylists(MyAppState state){
   List<Widget> allPlaylists=[];
   for (Playlist playlist in state.playlists){
-    allPlaylists.add(playlist.generateThumbnail());
+    allPlaylists.add(playlist.generateThumbnail(true));
   }
   return allPlaylists;
 }

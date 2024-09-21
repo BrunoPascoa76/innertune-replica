@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:innertune_replica/entities/song.dart';
+import 'package:innertune_replica/widgets/playlistScreen.dart';
 
 class Playlist {
   String name;
@@ -9,7 +10,7 @@ class Playlist {
 
   Playlist(this.name,this.songs);
 
-  Widget generateThumbnail(){
+  Widget generateThumbnail(bool isClickable){
     return Padding(
       padding: EdgeInsets.only(left:10,bottom:15,right:20),
       child: Column(
@@ -25,7 +26,7 @@ class Playlist {
                     child: _getImageList()
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: isClickable? (){Navigator.push(context,MaterialPageRoute(builder: (context)=>const PlaylistScreen()));}:(){}, //when in the playlist details screen, it is not clickable/nothing happens
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.transparent,
                       backgroundColor: Colors.transparent,
