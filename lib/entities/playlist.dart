@@ -91,4 +91,12 @@ class Playlist {
     minutes=totalDuration%60;
     return "$hours:$minutes";
   }
+
+  List<Widget> generateSongList(){
+    List<Widget> generatedWidgets=[];
+    for(Song song in songs){
+      generatedWidgets.add(song.generateListItem());
+    }
+    return generatedWidgets;
+  }
 }
