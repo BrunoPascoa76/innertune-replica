@@ -12,4 +12,10 @@ class Song{
   Widget getImage(){
     return Image.network(imageUrl,fit:BoxFit.cover);
   }
+  
+  String convertToTimeString(){
+    int hours=duration ~/ 60;
+    int minutes= duration%60;
+    return "$hours:$minutes";
+  }
 }

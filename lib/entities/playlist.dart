@@ -41,10 +41,11 @@ class Playlist {
               );
             },
           ),
-          Padding(
-            padding: EdgeInsets.only(top:5),
-            child:Text(style:TextStyle(fontWeight: FontWeight.bold,fontSize:15),name)
-          )
+          if(isClickable)
+            Padding(
+              padding: EdgeInsets.only(top:5),
+              child:Text(style:TextStyle(fontWeight: FontWeight.bold,fontSize:15),name)
+            )
         ]
       ),
     );  
@@ -79,5 +80,15 @@ class Playlist {
         )
       );
     }
+  }
+
+  String totalDuration(){
+    int totalDuration=0,hours,minutes;
+    for (Song song in songs){
+      totalDuration+=song.duration;
+    }
+    hours=totalDuration ~/60;
+    minutes=totalDuration%60;
+    return "$hours:$minutes";
   }
 }
