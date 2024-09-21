@@ -63,7 +63,16 @@ class _PlaylistScreenStatus extends State<PlaylistScreen>{
                     )))
               ]),
             ),
-            //TODO: sort,...
+            Padding(
+              padding: const EdgeInsets.only(left:10,right: 10),
+              child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: [
+                Expanded(flex:10,child:TextButton(onPressed: (){}, child: Text("Custom order"))),
+                Spacer(flex:10),
+                IconButton(onPressed: (){}, icon: Icon(Icons.select_all,color:Colors.white)),
+                Spacer(flex:1),
+                IconButton(onPressed: (){}, icon: Icon(Icons.lock_open,color:Colors.white))
+                ]),
+            ),
             //TODO: song list
           ])
         )
