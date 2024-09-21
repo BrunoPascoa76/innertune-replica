@@ -35,7 +35,7 @@ class _LibraryScreenStatus extends State<LibraryScreen>{
             )
           ),
           Padding(
-            padding: EdgeInsets.only(top:10,bottom:10),
+            padding: EdgeInsets.only(top:0,bottom:10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

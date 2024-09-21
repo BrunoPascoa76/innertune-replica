@@ -51,22 +51,31 @@ class Playlist {
 
   Widget _getImageList(){
     if(songs.length==1){
-      return songs[0].getImage();
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: songs[0].getImage()
+      );
     }else if (songs.length<=3){
-      return GridView.count(
-        childAspectRatio: 1,
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        crossAxisCount: 2,
-        children: songs.map((s)=>s.getImage()).toList()
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: GridView.count(
+          childAspectRatio: 1,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          crossAxisCount: 2,
+          children: songs.map((s)=>s.getImage()).toList()
+        )
       );
     }else{
-      return GridView.count(
-        childAspectRatio: 1,
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        crossAxisCount: 2,
-        children:songs.sublist(0,4).map((s)=>s.getImage()).toList()
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child:GridView.count(
+          childAspectRatio: 1,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          crossAxisCount: 2,
+          children:songs.sublist(0,4).map((s)=>s.getImage()).toList()
+        )
       );
     }
   }
