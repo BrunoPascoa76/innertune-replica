@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innertune_replica/widgets/searchScreen.dart';
 
 class SearchBarWidget extends StatelessWidget{
   const SearchBarWidget({super.key});
@@ -8,7 +9,7 @@ class SearchBarWidget extends StatelessWidget{
     return Padding(
       padding: EdgeInsets.only(left:10,right:10,bottom:20),
       child: Stack(children: [
-        ElevatedButton(
+        Hero(tag:"search screen", child:ElevatedButton(
           style: ElevatedButton.styleFrom(
             foregroundColor: Color.fromARGB(255, 189, 188, 188),
             backgroundColor: Color.fromARGB(255, 41, 45, 56),
@@ -18,16 +19,23 @@ class SearchBarWidget extends StatelessWidget{
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
-          onPressed: (){},
+          onPressed: (){Navigator.push(context, _SearchBarRoute(builder: (context)=>const SearchScreen()));},
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [Icon(Icons.search,color:Colors.white),Padding(padding:EdgeInsets.only(left:10),child:Text("Pesquisar"))]),
             ],
-          )
+          ))
         ),
         Align(alignment: Alignment.centerRight,child:IconButton(onPressed:(){},icon:Icon(color:Colors.white,Icons.settings_outlined))),
       ])
     );
   }
+}
+
+class _SearchBarRoute extends MaterialPageRoute {
+  _SearchBarRoute({required WidgetBuilder builder}) : super(builder: builder);
+
+  @override
+  Duration get transitionDuration => Duration(milliseconds: 500);
 }
