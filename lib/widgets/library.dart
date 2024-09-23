@@ -41,11 +41,12 @@ class _LibraryScreenStatus extends State<LibraryScreen>{
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
+                  style:TextButton.styleFrom(foregroundColor: Color.fromARGB(255, 145, 176, 206)),
                   onPressed: (){},
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text("Quando adicionada "),
+                      Text("Quando adicionada"),
                       Icon(Icons.arrow_downward)
                     ],
                   )
