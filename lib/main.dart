@@ -38,5 +38,6 @@ class MyAppState extends ChangeNotifier {
   MyAppState(){
     playlists.addAll([Playlist("Touhou", [songs[0],songs[1],songs[2]]),Playlist("Misc", [songs[3]])]);
     selectedPlaylist=playlists[0];
+    releaseAlbums=List.filled(10,Album("Touhou OST","Touhou Project",playlists[0].songs,"https://i.ytimg.com/vi/7RBJ4NMOBV0/maxresdefault.jpg"));
   } 
 } 

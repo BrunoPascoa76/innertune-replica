@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:innertune_replica/entities/album.dart';
 import 'package:innertune_replica/main.dart';
+import 'package:innertune_replica/widgets/playlistScreen.dart';
 import 'package:innertune_replica/widgets/searchbar.dart';
 import 'package:provider/provider.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
@@ -27,15 +29,14 @@ class _ExploreScreenStatus extends State<ExploreScreen>{
           ])
         ),
         SizedBox(
-          height: 100.0,
+          height:160,
           child: ListView(
             shrinkWrap:true,
             physics: ClampingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            children: _getAlbumList(appState.newReleaseAlbums)
+            children: _getAlbumList(appState.releaseAlbums)
           ),
         ),
-        //TODO: albums carroussel
         TextButton(
           onPressed: (){},
           style: TextButton.styleFrom(foregroundColor: Color.fromARGB(255, 145, 176, 206)),
@@ -49,7 +50,45 @@ class _ExploreScreenStatus extends State<ExploreScreen>{
     );
   }
 
-  List<Widget> getAlbumList(List<Album> albums){
-    return []; //TODO: Implement this
+  List<Widget> _getAlbumList(List<Album> albums){
+    List<Widget> albumList=[];
+    for(Album album in albums){
+      albumList.add(
+        Padding(
+          padding: const EdgeInsets.only(left:10,right:10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width:120,
+                child: AspectRatio(
+                  aspectRatio:1,
+                  child:Stack(
+                    children: [
+                      AspectRatio(
+                        aspectRatio: 1,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: GestureDetector(
+                            onTap:(){Navigator.push(context,MaterialPageRoute(builder: (context)=>const PlaylistScreen()));},
+                            child: Image.network(album.coverImageUrl,fit:BoxFit.fill))
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: IconButton(onPressed: (){}, icon: Icon(Icons.play_arrow)),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              TextScroll(album.name,style:TextStyle(fontWeight: FontWeight.bold)),
+              TextScroll(album.artist,style:TextStyle(fontSize:12))
+            ],
+          ),
+        )
+      );
+    }
+    return albumList;
   }
 }

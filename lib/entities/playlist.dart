@@ -25,17 +25,20 @@ class Playlist {
                     height: constraints.maxWidth-11,
                     child: _getImageList()
                   ),
-                  ElevatedButton(
-                    onPressed: isClickable? (){Navigator.push(context,MaterialPageRoute(builder: (context)=>const PlaylistScreen()));}:(){}, //when in the playlist details screen, it is not clickable/nothing happens
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      fixedSize: Size(constraints.maxWidth, constraints.maxWidth-11),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                  Opacity(
+                    opacity: 0,
+                    child: ElevatedButton(
+                      onPressed: isClickable? (){Navigator.push(context,MaterialPageRoute(builder: (context)=>const PlaylistScreen()));}:(){}, //when in the playlist details screen, it is not clickable/nothing happens
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.transparent,
+                        backgroundColor: Colors.transparent,
+                        fixedSize: Size(constraints.maxWidth, constraints.maxWidth-11),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                       ),
+                      child: null
                     ),
-                    child: null
                   ),
                 ]
               );
