@@ -24,24 +24,27 @@ class _ExploreScreenStatus extends State<ExploreScreen>{
           onPressed: (){},
           style: TextButton.styleFrom(foregroundColor: Color.fromARGB(255, 145, 176, 206)),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-            Text("New release álbuns",style:TextStyle(fontWeight:FontWeight.bold,fontSize:20)),
+            Text("New release álbuns",style:TextStyle(fontWeight:FontWeight.bold,fontSize:22)),
             Icon(Icons.arrow_forward)
           ])
         ),
-        SizedBox(
-          height:160,
-          child: ListView(
-            shrinkWrap:true,
-            physics: ClampingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            children: _getAlbumList(appState.releaseAlbums)
+        Padding(
+          padding: const EdgeInsets.only(top:10,bottom:35),
+          child: SizedBox(
+            height:160,
+            child: ListView(
+              shrinkWrap:true,
+              physics: ClampingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              children: _getAlbumList(appState.releaseAlbums)
+            ),
           ),
         ),
         TextButton(
           onPressed: (){},
           style: TextButton.styleFrom(foregroundColor: Color.fromARGB(255, 145, 176, 206)),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-            Text("Moods and Genres",style:TextStyle(fontWeight:FontWeight.bold,fontSize:20)),
+            Text("Moods and Genres",style:TextStyle(fontWeight:FontWeight.bold,fontSize:22)),
             Icon(Icons.arrow_forward)
           ])
         ),
@@ -55,7 +58,7 @@ class _ExploreScreenStatus extends State<ExploreScreen>{
     for(Album album in albums){
       albumList.add(
         Padding(
-          padding: const EdgeInsets.only(left:10,right:10),
+          padding: const EdgeInsets.only(left:10,right:15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
