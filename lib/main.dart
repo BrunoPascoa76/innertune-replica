@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   }
 }
 class MyAppState extends ChangeNotifier {
-  //hard-coded because the app is static
+  //all the static components are declared here for readability
   List<Song> songs=[Song("Love-Colored Master Spark","Touhou Project",15*60+1,"https://i.ytimg.com/vi/7RBJ4NMOBV0/maxresdefault.jpg"),Song("Lunatic Eyes ~ Invisible Full Moon","Touhou Project",5*60+7,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5oB7pvVwBFS_gFwfnSYfPCGLkhNcftLycnQ&s"),Song("Night of Nights","Touhou Project",3*60+12,"https://i.ytimg.com/vi/vS_a8Edde8k/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGHIgSihBMA8=&rs=AOn4CLC6VDiMKULhtIXR58D7XEx-ExkiiA"),Song("Kick Back pero es versión Salsa (Full)","Tricker",3*60+44,"https://i.ytimg.com/vi/5mfDzBeeBSI/maxresdefault.jpg")];
   List<Playlist> playlists=[];
   List<Album> releaseAlbums=[];
@@ -37,6 +37,6 @@ class MyAppState extends ChangeNotifier {
 
   MyAppState(){
     playlists.addAll([Playlist("Touhou", [songs[0],songs[1],songs[2]]),Playlist("Misc", [songs[3]])]);
-    selectedPlaylist=playlists[0]; //added because this is static (otherwise it would be set on click)
+    selectedPlaylist=playlists[0];
   } 
 } 
