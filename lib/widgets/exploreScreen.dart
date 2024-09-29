@@ -48,7 +48,20 @@ class _ExploreScreenStatus extends State<ExploreScreen>{
             Icon(Icons.arrow_forward)
           ])
         ),
-        //TODO: mood and genres list
+        Padding(
+          padding: const EdgeInsets.only(top:12),
+          child: SizedBox(
+            height:225,
+            width:double.infinity,
+            child: GridView.count(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              crossAxisCount: 4,
+              childAspectRatio: .28/1,
+              children: _getMoodList()
+            ),
+          ),
+        )
       ])
     );
   }
@@ -93,5 +106,26 @@ class _ExploreScreenStatus extends State<ExploreScreen>{
       );
     }
     return albumList;
+  }
+
+  List<Widget> _getMoodList(){
+    List<Widget> lst=[];
+    for(String mood in ["Autumn Feel","Black Lives Matter","Chill","Christmas","Commute","Energy Boosters","Fell Good","Focus","Party","Pride","Romance","Sad","Sleep","Workout","African","Arabic","Autumn","Blues","Bollywood & Indian","Classical","Country & Americana","Dance & Eletronic","Decades","Family","Folk & Acoustic","Hip-Hop","Indie & Alternative","J-Pop","Jazz","K-Pop","Latin","Mandopop & Cantopop","Metal","Pop","R&B & Soul","Reggae & Caribbean","Rock","SoundTracks & Musicals"]){
+      lst.add(Padding(
+        padding: const EdgeInsets.only(top:12,left:12),
+        child: ElevatedButton(
+          onPressed: (){},
+          style:ElevatedButton.styleFrom(
+            padding: EdgeInsets.only(left:10),
+            alignment: Alignment.centerLeft,
+            backgroundColor: Color.fromARGB(255,34,38,49),
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
+          ),
+          child: Text(mood),
+        ),
+      ));
+    }
+    return lst;
   }
 }
