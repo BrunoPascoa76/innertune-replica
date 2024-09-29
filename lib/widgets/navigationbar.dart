@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innertune_replica/widgets/exploreScreen.dart';
+import 'package:innertune_replica/widgets/homeScreen.dart';
 import 'package:innertune_replica/widgets/library.dart';
 
 class NavigationBarWidget extends StatefulWidget {
@@ -14,7 +15,7 @@ class _BottomNavigationBarState extends State<NavigationBarWidget>{
   int _selectedIndex = 0;
    
   final _pageOptions= <Widget>[
-    Text("aaaa"),
+    HomeScreen(),
     ExploreScreen(),
     LibraryScreen()
   ];
