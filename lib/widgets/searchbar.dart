@@ -34,7 +34,7 @@ class SearchBarWidget extends StatelessWidget{
 }
 
 class _SearchBarRoute extends MaterialPageRoute {
-  _SearchBarRoute({required WidgetBuilder builder}) : super(builder: builder);
+  _SearchBarRoute({required super.builder});
 
   @override
   Duration get transitionDuration => Duration(milliseconds: 500);

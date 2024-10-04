@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sprintf/sprintf.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 class Song{
@@ -17,7 +18,8 @@ class Song{
   String convertToTimeString(){
     int hours=duration ~/ 60;
     int minutes= duration%60;
-    return "$hours:$minutes";
+    
+    return sprintf("%2d:%02d",[hours,minutes]);
   }
 
   Widget generateListItem(){

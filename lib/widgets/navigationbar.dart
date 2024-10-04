@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:innertune_replica/widgets/exploreScreen.dart';
 import 'package:innertune_replica/widgets/homeScreen.dart';
 import 'package:innertune_replica/widgets/library.dart';
+import 'package:innertune_replica/widgets/songOverlay.dart';
 
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
@@ -15,9 +16,9 @@ class _BottomNavigationBarState extends State<NavigationBarWidget>{
   int _selectedIndex = 0;
    
   final _pageOptions= <Widget>[
-    HomeScreen(),
-    ExploreScreen(),
-    LibraryScreen()
+    SongOverlay(HomeScreen()),
+    SongOverlay(ExploreScreen()),
+    SongOverlay(LibraryScreen())
   ];
 
   @override
@@ -29,6 +30,7 @@ class _BottomNavigationBarState extends State<NavigationBarWidget>{
             _selectedIndex=index;
           });
         },
+        backgroundColor: Color.fromARGB(255,34,38,49),
         indicatorColor: Color.fromARGB(255,64,71,89),
         selectedIndex: _selectedIndex,
         destinations: const <Widget>[

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innertune_replica/main.dart';
+import 'package:innertune_replica/widgets/songOverlay.dart';
 import 'package:provider/provider.dart';
 
 class PlaylistScreen extends StatefulWidget {
@@ -13,12 +14,12 @@ class _PlaylistScreenStatus extends State<PlaylistScreen>{
   @override
   Widget build(BuildContext context) {
     var appState=context.watch<MyAppState>();
-    String playlistName=appState.selectedPlaylist.name;
-    int numberOfSongs=appState.selectedPlaylist.songs.length;
-    String totalDuration=appState.selectedPlaylist.totalDuration();
+    String playlistName=appState.selectedPlaylist!.name;
+    int numberOfSongs=appState.selectedPlaylist!.songs.length;
+    String totalDuration=appState.selectedPlaylist!.totalDuration();
     return Scaffold(
       body:SafeArea(
-        child: SingleChildScrollView(
+        child: SongOverlay(SingleChildScrollView(
           child:Column(children: [
             //back arrow:
             Align(alignment:Alignment.centerLeft,child:IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back,color:Colors.white))), 
@@ -27,7 +28,7 @@ class _PlaylistScreenStatus extends State<PlaylistScreen>{
               padding: const EdgeInsets.only(top:20),
               child: Row(children: [
                 //thumbnail:
-                Expanded(flex:7,child:appState.selectedPlaylist.generateThumbnail(false)),
+                Expanded(flex:7,child:appState.selectedPlaylist!.generateThumbnail(false)),
                 Expanded(flex:6,child:Column(children: [
                   Align(alignment:Alignment.centerLeft,child: Text(playlistName,style:TextStyle(fontWeight: FontWeight.bold,fontSize:22))),
                   Padding(
@@ -73,9 +74,9 @@ class _PlaylistScreenStatus extends State<PlaylistScreen>{
                 IconButton(onPressed: (){}, icon: Icon(Icons.lock_open,color:Colors.white))
                 ]),
             ),
-            Column(children: appState.selectedPlaylist.generateSongList())
+            Column(children: appState.selectedPlaylist!.generateSongList())
           ])
-        )
+        ))
       )
     );
   }
