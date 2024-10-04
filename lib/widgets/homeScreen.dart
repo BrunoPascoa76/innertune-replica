@@ -86,7 +86,7 @@ class _HomeScreenStatus extends State<HomeScreen>{
               shrinkWrap: true,
               crossAxisCount: 4,
               childAspectRatio: .17/1,
-              children: _getQuickPicks(appState.quickPicks)
+              children: _getQuickPicks(appState.quickPicks,appState)
             ),
           ),
         )
@@ -95,36 +95,43 @@ class _HomeScreenStatus extends State<HomeScreen>{
     );
   }
 
-  List<Widget> _getQuickPicks(List<Song> songs){
+  List<Widget> _getQuickPicks(List<Song> songs,MyAppState appState){
     List<Widget> lst=[];
     for(Song song in songs){
       lst.add(SizedBox(
         width: 100,
-        child: Row(children: [
-          SizedBox(
-            height:50,
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: Image.network(song.imageUrl,fit:BoxFit.fill)
+        child: GestureDetector(
+          onTap:(){
+            appState.currentSong=song;
+            appState.isPlaying=true;
+            appState.update();
+          },
+          child: Row(children: [
+            SizedBox(
+              height:50,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.network(song.imageUrl,fit:BoxFit.fill)
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left:10),
-              child: Column(children: [
-                Align(alignment:Alignment.centerLeft,child: TextScroll(song.name,style:TextStyle(fontWeight: FontWeight.bold))),
-                Padding(
-                  padding: const EdgeInsets.only(top:5),
-                  child: Align(alignment:Alignment.centerLeft,child: TextScroll(song.artist,style:TextStyle(fontSize:12,color:Color.fromARGB(255,211,	211,	211)))),
-                )
-              ]),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left:10),
+                child: Column(children: [
+                  Align(alignment:Alignment.centerLeft,child: TextScroll(song.name,style:TextStyle(fontWeight: FontWeight.bold))),
+                  Padding(
+                    padding: const EdgeInsets.only(top:5),
+                    child: Align(alignment:Alignment.centerLeft,child: TextScroll(song.artist,style:TextStyle(fontSize:12,color:Color.fromARGB(255,211,	211,	211)))),
+                  )
+                ]),
+              ),
             ),
-          ),
-          Align(alignment:Alignment.centerRight,child:IconButton(onPressed: (){}, icon: Icon(Icons.more_vert)))
-        ]),
+            Align(alignment:Alignment.centerRight,child:IconButton(onPressed: (){}, icon: Icon(Icons.more_vert)))
+          ]),
+        ),
       ));
     }
     return lst;

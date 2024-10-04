@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:innertune_replica/entities/song.dart';
+import 'package:innertune_replica/main.dart';
 import 'package:innertune_replica/widgets/playlistScreen.dart';
 
 class Playlist {
@@ -95,10 +96,10 @@ class Playlist {
     return "$hours:$minutes";
   }
 
-  List<Widget> generateSongList(){
+  List<Widget> generateSongList(MyAppState appState){
     List<Widget> generatedWidgets=[];
     for(Song song in songs){
-      generatedWidgets.add(song.generateListItem());
+      generatedWidgets.add(song.generateListItem(appState));
     }
     return generatedWidgets;
   }

@@ -74,7 +74,7 @@ class _PlaylistScreenStatus extends State<PlaylistScreen>{
                 IconButton(onPressed: (){}, icon: Icon(Icons.lock_open,color:Colors.white))
                 ]),
             ),
-            Column(children: appState.selectedPlaylist!.generateSongList())
+            Column(children: appState.selectedPlaylist!.generateSongList(appState))
           ])
         ))
       )
